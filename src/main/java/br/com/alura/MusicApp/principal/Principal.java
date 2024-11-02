@@ -43,6 +43,7 @@ public class Principal {
                     break;
                 case 2:
                     System.out.println("Caso 2");
+                    addMusic();
                     break;
                 case 3:
                     System.out.println("Caso 3");
@@ -65,12 +66,30 @@ public class Principal {
 
     }
 
+
+
     private void addArtist(){
         System.out.println("Adicione um Artista: ");
         var addedArtist = reading.nextLine();
-        Artist artist = new Artist(addedArtist, );
+        System.out.println("Adicione o tipo do artista (SOLO, DUPLA, BANDA): ");
+        try {
+
+        var addedArtistType = reading.nextLine();
+        Categoria typeArtist = Categoria.valueOf(addedArtistType);
+        Artist artist = new Artist(addedArtist, typeArtist);
         artistList.add(artist);
         System.out.println(artistList);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Erro: categoria inválida, digite com letras maiúsculas");
+            System.out.println(e);
+        }
+    }
+
+    private void addMusic() {
+        System.out.println(artistList);
+        System.out.println("De qual artista você quer adicionar uma música ?");
+        var addedArtistMusic = reading.nextLine();
+        artistList.forEach(a -> System.out.println(a.getName().contains(addedArtistMusic)));
     }
 
 }

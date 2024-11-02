@@ -2,12 +2,18 @@ package br.com.alura.MusicApp.model;
 
 public enum Categoria {
 
-    SOLO,
-    DUPLA,
-    BANDA;
+    SOLO("solo"),
+    DUPLA("dupla"),
+    BANDA("banda");
 
-}
+    private String tipo;
 
-public static Categoria fromString(String text) {
+    Categoria(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getTipo(){
+        return this.tipo;
+    }
 
 }

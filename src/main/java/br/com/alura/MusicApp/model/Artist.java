@@ -8,11 +8,18 @@ public class Artist {
 
     public Artist(String name, Categoria tipo) {
         this.name = name;
-        this.tipo = Categoria.SOLO;
+        this.tipo = tipo;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override
     public String toString() {
-        return "name='" + name + '\'' ;
+        return "Artist{" +
+                "name='" + name + '\'' +
+                ", tipo=" + tipo +
+                '}';
     }
 }
