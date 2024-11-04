@@ -18,6 +18,8 @@ public class Music {
     @ManyToOne
     private Artist artist;
 
+    public Music (){}
+
     public Music(String musicName, String album, Artist artist) {
         this.musicName = musicName;
         this.album = album;

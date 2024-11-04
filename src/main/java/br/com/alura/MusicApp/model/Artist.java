@@ -19,7 +19,7 @@ public class Artist {
     @Enumerated(EnumType.STRING)
     private Categoria tipo;
 
-    @OneToMany(mappedBy = "artist")
+    @OneToMany(mappedBy = "artist", cascade = CascadeType.ALL)
     private List<Music> musicas = new ArrayList<>();
 
     public Artist() {}

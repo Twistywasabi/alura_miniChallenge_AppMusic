@@ -112,6 +112,11 @@ public class Principal {
 
         if(artist.isPresent()) {
             var artistFound = artist.get();
+            System.out.println("Qual música você quer adicionar ?");
+            var musicArtistFound = reading.nextLine();
+            System.out.println("De qual álbum é essa música ?");
+            var albumMusicArtistFound = reading.nextLine();
+
         } else {
             System.out.println("Artista não encontrado");
         }
