@@ -14,10 +14,14 @@ public class Music {
         this.artist = artist;
     }
 
+    public Artist getArtist() {
+        return artist;
+    }
+
     @Override
     public String toString() {
         return "Música: '" + musicName + '\'' +
                 ", Álbum: '" + album + '\'' +
-                ", Artista: '" + artist.getName() + + '\'' + "\n";
+                ", Artista: '" + artist.getName() + '\'';
     }
 }

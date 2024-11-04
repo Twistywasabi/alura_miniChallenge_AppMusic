@@ -53,6 +53,7 @@ public class Principal {
                     break;
                 case 4:
                     System.out.println("Caso 4");
+                    searchMusicsByArtist();
                     break;
                 case 5:
                     System.out.println("Caso 5");
@@ -68,6 +69,8 @@ public class Principal {
         }
 
     }
+
+
 
 
     private void addArtist(){
@@ -111,6 +114,23 @@ public class Principal {
 
     private void listMusic() {
         System.out.println(musicList);
+    }
+
+    private void searchMusicsByArtist() {
+        System.out.println("Digite o artista: ");
+        var searchArtist = reading.nextLine();
+        List<Music> selectedMusic = new ArrayList<>();
+        musicList.forEach(m -> {
+
+            boolean isMusicFromArtist = m.getArtist().getName().contains(searchArtist);
+
+            if(isMusicFromArtist) {
+               selectedMusic.add(m);
+            }
+
+        });
+        System.out.println(selectedMusic);
+
     }
 
 }
