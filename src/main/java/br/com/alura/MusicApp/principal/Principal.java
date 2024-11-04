@@ -3,6 +3,8 @@ package br.com.alura.MusicApp.principal;
 import br.com.alura.MusicApp.model.Artist;
 import br.com.alura.MusicApp.model.Categoria;
 import br.com.alura.MusicApp.model.Music;
+import br.com.alura.MusicApp.repository.ArtistRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +15,11 @@ public class Principal {
     private Scanner reading = new Scanner(System.in);
     private List<Artist> artistList = new ArrayList<>();
     private List<Music> musicList = new ArrayList<>();
+    private ArtistRepository repositorio;
+
+    public Principal(ArtistRepository repositorio) {
+        this.repositorio = repositorio;
+    }
 
     public void showMenu(){
 
@@ -82,8 +89,10 @@ public class Principal {
             var addedArtistType = reading.nextLine();
             Categoria typeArtist = Categoria.valueOf(addedArtistType);
             Artist artist = new Artist(addedArtist, typeArtist);
-            artistList.add(artist);
-            System.out.println(artistList);
+            //artistList.add(artist);
+            repositorio.save(artist);
+            //artistList = repositorio.findAll();
+
         } catch (IllegalArgumentException e) {
             System.out.println("Erro: categoria inválida, digite com letras maiúsculas");
             System.out.println(e);
@@ -113,7 +122,8 @@ public class Principal {
     }
 
     private void listMusic() {
-        System.out.println(musicList);
+
+        artistList = repositorio.findAll();
     }
 
     private void searchMusicsByArtist() {

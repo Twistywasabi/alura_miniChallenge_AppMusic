@@ -22,6 +22,6 @@ public class Music {
     public String toString() {
         return "Música: '" + musicName + '\'' +
                 ", Álbum: '" + album + '\'' +
-                ", Artista: '" + artist.getName() + '\'';
+                ", Artista: '" + artist.getName() + '\'' + '\n';
     }
 }
