@@ -49,6 +49,7 @@ public class Principal {
                     break;
                 case 3:
                     System.out.println("Caso 3");
+                    listMusic();
                     break;
                 case 4:
                     System.out.println("Caso 4");
@@ -67,7 +68,6 @@ public class Principal {
         }
 
     }
-
 
 
     private void addArtist(){
@@ -107,6 +107,10 @@ public class Principal {
             }
 
         });
+    }
+
+    private void listMusic() {
+        System.out.println(musicList);
     }
 
 }

@@ -16,10 +16,8 @@ public class Music {
 
     @Override
     public String toString() {
-        return "Music{" +
-                "musicName='" + musicName + '\'' +
-                ", album='" + album + '\'' +
-                ", artist=" + artist.getName() +
-                '}';
+        return "Música: '" + musicName + '\'' +
+                ", Álbum: '" + album + '\'' +
+                ", Artista: '" + artist.getName() + + '\'' + "\n";
     }
 }
