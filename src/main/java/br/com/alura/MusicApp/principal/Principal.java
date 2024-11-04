@@ -91,7 +91,8 @@ public class Principal {
             Artist artist = new Artist(addedArtist, typeArtist);
             //artistList.add(artist);
             repositorio.save(artist);
-            //artistList = repositorio.findAll();
+            artistList = repositorio.findAll();
+            artistList.stream().forEach(System.out::println);
 
         } catch (IllegalArgumentException e) {
             System.out.println("Erro: categoria inválida, digite com letras maiúsculas");

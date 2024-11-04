@@ -23,6 +23,7 @@ public class Artist {
     private List<Music> musicas = new ArrayList<>();
 
 
+    public Artist() {}
 
     public Artist(String name, Categoria tipo) {
         this.name = name;
