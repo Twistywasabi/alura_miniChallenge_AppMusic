@@ -2,6 +2,7 @@ package br.com.alura.MusicApp.principal;
 
 import br.com.alura.MusicApp.model.Artist;
 import br.com.alura.MusicApp.model.Categoria;
+import br.com.alura.MusicApp.model.Music;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +12,7 @@ public class Principal {
 
     private Scanner reading = new Scanner(System.in);
     private List<Artist> artistList = new ArrayList<>();
+    private List<Music> musicList = new ArrayList<>();
 
     public void showMenu(){
 
@@ -74,11 +76,11 @@ public class Principal {
         System.out.println("Adicione o tipo do artista (SOLO, DUPLA, BANDA): ");
         try {
 
-        var addedArtistType = reading.nextLine();
-        Categoria typeArtist = Categoria.valueOf(addedArtistType);
-        Artist artist = new Artist(addedArtist, typeArtist);
-        artistList.add(artist);
-        System.out.println(artistList);
+            var addedArtistType = reading.nextLine();
+            Categoria typeArtist = Categoria.valueOf(addedArtistType);
+            Artist artist = new Artist(addedArtist, typeArtist);
+            artistList.add(artist);
+            System.out.println(artistList);
         } catch (IllegalArgumentException e) {
             System.out.println("Erro: categoria inválida, digite com letras maiúsculas");
             System.out.println(e);
@@ -89,7 +91,22 @@ public class Principal {
         System.out.println(artistList);
         System.out.println("De qual artista você quer adicionar uma música ?");
         var addedArtistMusic = reading.nextLine();
-        artistList.forEach(a -> System.out.println(a.getName().contains(addedArtistMusic)));
+        artistList.forEach(a -> {
+
+            boolean isArtistPresent = a.getName().contains(addedArtistMusic);
+            if (isArtistPresent) {
+                System.out.println("Nome da música");
+                var addMusic = reading.nextLine();
+                System.out.println("Nome do álbum");
+                var addMusicAlbum = reading.nextLine();
+                Music selectedMusic = new Music(addMusic, addMusicAlbum, a);
+                musicList.add(selectedMusic);
+                System.out.println("Música adicionada");
+                System.out.println(musicList);
+
+            }
+
+        });
     }
 
 }
