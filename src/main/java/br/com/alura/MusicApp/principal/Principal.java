@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class Principal {
@@ -101,25 +102,19 @@ public class Principal {
     }
 
     private void addMusic() {
-        System.out.println(artistList);
+        artistList = repositorio.findAll();
+        artistList.stream().forEach(System.out::println);
         System.out.println("De qual artista você quer adicionar uma música ?");
         var addedArtistMusic = reading.nextLine();
-        artistList.forEach(a -> {
+        Optional<Artist> artist = artistList.stream()
+                .filter(a -> a.getName().toLowerCase().contains(addedArtistMusic.toLowerCase()))
+                .findFirst();
 
-            boolean isArtistPresent = a.getName().contains(addedArtistMusic);
-            if (isArtistPresent) {
-                System.out.println("Nome da música");
-                var addMusic = reading.nextLine();
-                System.out.println("Nome do álbum");
-                var addMusicAlbum = reading.nextLine();
-                Music selectedMusic = new Music(addMusic, addMusicAlbum, a);
-                musicList.add(selectedMusic);
-                System.out.println("Música adicionada");
-                System.out.println(musicList);
-
-            }
-
-        });
+        if(artist.isPresent()) {
+            var artistFound = artist.get();
+        } else {
+            System.out.println("Artista não encontrado");
+        }
     }
 
     private void listMusic() {

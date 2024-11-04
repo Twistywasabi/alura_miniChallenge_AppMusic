@@ -19,9 +19,8 @@ public class Artist {
     @Enumerated(EnumType.STRING)
     private Categoria tipo;
 
-    @Transient
+    @OneToMany(mappedBy = "artist")
     private List<Music> musicas = new ArrayList<>();
-
 
     public Artist() {}
 
@@ -53,6 +52,6 @@ public class Artist {
     @Override
     public String toString() {
         return "Artista: '" + name + '\'' +
-                ", Tipo: " + tipo + '\n';
+                ", Tipo: " + tipo;
     }
 }
